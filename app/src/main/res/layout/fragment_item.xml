@@ -12,7 +12,6 @@
         android:layout_width="144dp"
         android:layout_height="144dp"
         android:layout_marginTop="20dp"
-        android:background="@color/purple_200"
         android:text="@string/hello_blank_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
     <TextView
+        android:id="@+id/urlTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18dp"
