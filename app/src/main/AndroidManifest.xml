@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.androidolympiadsemifinal">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".network.VkProjectsApp"
         android:allowBackup="true"
