@@ -4,7 +4,6 @@ import android.app.Application
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class VkProjectsApp: Application() {
@@ -26,13 +25,11 @@ class VkProjectsApp: Application() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://mobile-olympiad-trajectory.hb.bizmrg.com/")
+            .baseUrl("https://mobile-olympiad-trajectory.hb.bizmrg.com")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
-        vkProjectsApi = retrofit.create(vkProjectsApi::class.java)
+        vkProjectsApi = retrofit.create(VkProjectsApi::class.java)
     }
-
 }
