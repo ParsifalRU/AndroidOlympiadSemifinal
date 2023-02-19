@@ -1,12 +1,10 @@
 package com.example.androidolympiadsemifinal.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +15,6 @@ import com.example.androidolympiadsemifinal.model.ServiceModel
 import com.example.androidolympiadsemifinal.network.VkProjectsApp
 import com.example.androidolympiadsemifinal.view.adapter.RecyclerViewAdapter
 import com.example.androidolympiadsemifinal.viewmodel.VkProjectsViewModel
-import java.util.ArrayList
 
 class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
 
@@ -53,7 +50,7 @@ class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
         })
         viewModel.liveDataError.observe(viewLifecycleOwner, Observer{ error ->
             binding.projectsRecyclerView.visibility = View.GONE
-            Toast.makeText(requireActivity().baseContext, "Повторная попытка через 5 сек $error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity().baseContext, "Произошла ошибка, повторная попытка через 5 сек $error", Toast.LENGTH_SHORT).show()
         })
     }
 
@@ -61,6 +58,5 @@ class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
         parentFragmentManager.beginTransaction()
             .replace(R.id.list_fragment, ItemFragment(position,dataList))
             .commit()
-
     }
 }

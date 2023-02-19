@@ -1,12 +1,8 @@
-package com.example.androidolympiadsemifinal
+package com.example.androidolympiadsemifinal.view
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.androidolympiadsemifinal.network.VkProjectsApp
-import com.example.androidolympiadsemifinal.view.ListFragment
-import com.example.androidolympiadsemifinal.viewmodel.VkProjectsViewModel
+import com.example.androidolympiadsemifinal.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,15 +2,14 @@ package com.example.androidolympiadsemifinal.view
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.androidolympiadsemifinal.R
 import com.example.androidolympiadsemifinal.databinding.FragmentItemBinding
-import com.example.androidolympiadsemifinal.databinding.FragmentListBinding
 import com.example.androidolympiadsemifinal.model.ServiceModel
 
 class ItemFragment(val position: Int, val projectsData: ServiceModel) : Fragment() {
