@@ -22,7 +22,7 @@ class RecyclerViewAdapter(
     class ViewHolder(view: View):RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.imageView2)
         val itemNameTextView: TextView = view.findViewById(R.id.itemNameTextView)
-        val recyclerItem: ConstraintLayout = view.findViewById<ConstraintLayout>(R.id.recycler_item_constraint)
+        val recyclerItem: ConstraintLayout = view.findViewById(R.id.recycler_item_constraint)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
