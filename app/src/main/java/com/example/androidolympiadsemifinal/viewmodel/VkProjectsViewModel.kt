@@ -16,28 +16,32 @@ class VkProjectsViewModel(application: Application):AndroidViewModel(application
 
     fun getProjectsData(vkProjectsApi: VkProjectsApi?){
         isStarted = true
-        Thread(object : Runnable {
-            override fun run() {
-                while (isStarted){
-                    val t = vkProjectsApi?.getProjectsData()
-                    t?.enqueue(object: Callback<ServiceModel> {
-                         override fun onResponse(call: Call<ServiceModel>, response: Response<ServiceModel>) {
-                             liveData.value = response.body()
-                             isStarted = false
-                         }
-                         override fun onFailure(call: Call<ServiceModel>, t: Throwable) {
-                             liveDataError.value = t
-
-                         }
-                    })
-                    try {
-                        Thread.sleep(5000)
-                    }catch (e: InterruptedException){
-                        e.printStackTrace()
+        Thread {
+            while (isStarted) {
+                val t = vkProjectsApi?.getProjectsData()
+                t?.enqueue(object : Callback<ServiceModel> {
+                    override fun onResponse(
+                        call: Call<ServiceModel>,
+                        response: Response<ServiceModel>
+                    ) {
+                        liveData.value = response.body()
+                        isStarted = false
                     }
+
+                    override fun onFailure(
+                        call: Call<ServiceModel>,
+                        t: Throwable
+                    ) {
+                        liveDataError.value = t
+                    }
+                })
+                try {
+                    Thread.sleep(5000)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
                 }
             }
-        }).start()
+        }.start()
     }
 
     override fun onCleared() {

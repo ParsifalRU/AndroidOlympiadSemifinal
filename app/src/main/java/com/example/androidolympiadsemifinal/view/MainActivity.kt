@@ -9,8 +9,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        hideActionBar()
         setFragment()
     }
+
+    private fun hideActionBar(){
+        supportActionBar?.hide()
+    }
+
     private fun setFragment(){
         supportFragmentManager.beginTransaction()
             .replace(R.id.list_fragment, ListFragment())
