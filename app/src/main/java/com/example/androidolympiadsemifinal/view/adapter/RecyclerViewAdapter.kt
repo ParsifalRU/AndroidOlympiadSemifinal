@@ -1,5 +1,6 @@
 package com.example.androidolympiadsemifinal.view.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,7 @@ class RecyclerViewAdapter(
         return dataList.items.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun refreshUI(){
         notifyDataSetChanged()
     }

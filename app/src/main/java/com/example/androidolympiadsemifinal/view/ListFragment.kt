@@ -26,12 +26,15 @@ class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListBinding.inflate(inflater, container, false)
+
         getData()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setToolBar()
     }
 
@@ -44,10 +47,10 @@ class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
     }
 
     private fun getData(){
+        val toastText = getText(R.string.toast)
         val viewModel = ViewModelProvider(this)[VkProjectsViewModel::class.java]
         viewModel.getProjectsData((activity?.application as? VkProjectsApp)?.vkProjectsApi)
         viewModel.liveData.observe(viewLifecycleOwner) { data ->
-            Toast.makeText(requireContext(), "Данные пришли", Toast.LENGTH_SHORT).show()
             setAdapter(data)
             binding.projectsRecyclerView.visibility = View.VISIBLE
             dataList = data
@@ -56,7 +59,7 @@ class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
             binding.projectsRecyclerView.visibility = View.GONE
             Toast.makeText(
                 requireActivity().baseContext,
-                "Произошла ошибка, повторная попытка через 5 сек $error",
+                "$toastText $error",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -70,7 +73,7 @@ class ListFragment : Fragment(), RecyclerViewAdapter.Listener {
 
     private fun setToolBar(){
         val toolbar: androidx.appcompat.widget.Toolbar = requireActivity().findViewById<View>(R.id.toolbar_list) as androidx.appcompat.widget.Toolbar
-        toolbar.title = "Проекты VK"
+        toolbar.setTitle(R.string.app_name)
         toolbar.setTitleTextColor(Color.WHITE)
     }
 }

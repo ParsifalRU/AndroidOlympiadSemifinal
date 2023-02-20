@@ -8,6 +8,7 @@
     tools:context=".view.ListFragment">
 
     <androidx.appcompat.widget.Toolbar
+        android:label="@string/app_name"
         android:id="@+id/toolbar_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

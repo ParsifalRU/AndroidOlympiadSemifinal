@@ -3,13 +3,14 @@ package com.example.androidolympiadsemifinal.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.androidolympiadsemifinal.model.ServiceModel
 import com.example.androidolympiadsemifinal.network.VkProjectsApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class VkProjectsViewModel(application: Application):AndroidViewModel(application) {
+class VkProjectsViewModel():ViewModel() {
     val liveData = MutableLiveData<ServiceModel>()
     val liveDataError = MutableLiveData<Throwable>()
     private var isStarted: Boolean = false
@@ -18,8 +19,8 @@ class VkProjectsViewModel(application: Application):AndroidViewModel(application
         isStarted = true
         Thread {
             while (isStarted) {
-                val t = vkProjectsApi?.getProjectsData()
-                t?.enqueue(object : Callback<ServiceModel> {
+                val request = vkProjectsApi?.getProjectsData()
+                request?.enqueue(object : Callback<ServiceModel> {
                     override fun onResponse(
                         call: Call<ServiceModel>,
                         response: Response<ServiceModel>
